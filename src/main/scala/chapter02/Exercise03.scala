@@ -1,9 +1,7 @@
 package chapter02
 
-import scala.annotation.tailrec
-
 object Exercise03 {
-  def curry[A, B, C](f: (A, B) => C): A => (B => C) = {
+  def curry[A, B, C](f: (A, B) => C): A => B => C = {
     (a: A) => (b: B) => f(a, b)
   }
 }
