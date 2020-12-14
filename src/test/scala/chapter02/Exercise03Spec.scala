@@ -6,7 +6,7 @@ import org.scalatest.matchers.should.Matchers
 
 class Exercise03Spec extends AnyFlatSpec with Matchers {
   "curry" should "multiply" in {
-    val curryFunc = Exercise03.curry((x: Int, y: Int) => x * y)
+    val curryFunc = curry((x: Int, y: Int) => x * y)
     curryFunc(2)(3) should be(6)
   }
 }
