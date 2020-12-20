@@ -153,4 +153,23 @@ object List {
 
   def flatMap2[A, B](as: List[A])(f: A => List[B]): List[B] =
     concat(map(as)(f))
+
+  // Exercise 21
+  def filter2[A](as: List[A])(f: A => Boolean): List[A] =
+    flatMap(as)(a => if (f(a)) List(a) else Nil)
+
+  // Exercise 22
+  def add(xs: List[Int], ys: List[Int]): List[Int] = (xs, ys) match {
+    case (Nil, _) => Nil
+    case (_, Nil) => Nil
+    case (Cons(x, xs), Cons(y, ys)) => Cons(x + y, add(xs, ys))
+  }
+
+  // Exercise 23
+  def zipWith[A, B, C](as: List[A], bs: List[B])(f: (A, B) => C): List[C] =
+    (as, bs) match {
+      case (Nil, _) => Nil
+      case (_, Nil) => Nil
+      case (Cons(h1, t1), Cons(h2, t2)) => Cons(f(h1, h2), zipWith(t1, t2)(f))
+    }
 }
